@@ -1,4 +1,10 @@
-import { Client, GatewayIntentBits, Events, Routes, SlashCommandBuilder } from "discord.js";
+import {
+  Client,
+  GatewayIntentBits,
+  Events,
+  Routes,
+  SlashCommandBuilder,
+} from "discord.js";
 
 import { handle_random_websim } from "./handlers";
 
@@ -8,7 +14,9 @@ if (!token) throw new Error("DISCORD_BOT_TOKEN is missing in .env");
 const bot = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 const commands = [
-  new SlashCommandBuilder().setName("random_websim").setDescription("Find a random websim project"),
+  new SlashCommandBuilder()
+    .setName("random_websim")
+    .setDescription("Find a random websim project"),
 ].map((command) => command.toJSON());
 
 bot.on(Events.InteractionCreate, async (interaction) => {
@@ -25,7 +33,9 @@ bot.once(Events.ClientReady, async () => {
   console.log(`Logged in as ${bot.user?.tag}`);
 
   if (process.env.NODE_ENV === "production") {
-    await bot.rest.put(Routes.applicationCommands(bot.user!.id), { body: commands });
+    await bot.rest.put(Routes.applicationCommands(bot.user!.id), {
+      body: commands,
+    });
   }
 });
 

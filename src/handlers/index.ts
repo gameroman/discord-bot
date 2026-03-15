@@ -1,5 +1,4 @@
 import type { CacheType, ChatInputCommandInteraction } from "discord.js";
-
 import { getFeedTrending } from "websim";
 
 async function findRandomWebsimProject() {
@@ -14,7 +13,9 @@ async function findRandomWebsimProject() {
 /**
  * Find a random websim project
  */
-export async function handle_random_websim(interaction: ChatInputCommandInteraction<CacheType>) {
+export async function handle_random_websim(
+  interaction: ChatInputCommandInteraction<CacheType>,
+) {
   await interaction.reply("Searching...");
   try {
     const randomProjectURL = await findRandomWebsimProject();
