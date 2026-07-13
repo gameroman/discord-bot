@@ -13,7 +13,7 @@ async function findRandomWebsimProject() {
 /**
  * Find a random websim project
  */
-export async function handle_random_websim(
+export async function handleRandomWebsim(
   interaction: ChatInputCommandInteraction<CacheType>,
 ) {
   await interaction.reply("Searching...");
